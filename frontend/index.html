@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMirror AI - Stress Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 MindMirror AI</h1>
+            <p class="subtitle">Real-time Stress Detection using AI</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Capture Section -->
+            <div class="capture-section">
+                <div class="capture-card">
+                    <h2>📸 Face Capture</h2>
+                    <div class="video-container">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                        <img id="captured-image" style="display: none;" alt="Captured face">
+                    </div>
+                    <button id="capture-btn" class="btn btn-primary">Capture Photo</button>
+                    <button id="retake-btn" class="btn btn-secondary" style="display: none;">Retake</button>
+                    <p class="status" id="face-status">Ready to capture</p>
+                </div>
+
+                <div class="capture-card">
+                    <h2>🎤 Voice Capture</h2>
+                    <div class="audio-container">
+                        <div class="audio-visualizer" id="audio-visualizer">
+                            <div class="wave-bars">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="timer" id="timer">3.0s</div>
+                    </div>
+                    <button id="record-btn" class="btn btn-primary">Record Audio (3s)</button>
+                    <button id="rerecord-btn" class="btn btn-secondary" style="display: none;">Re-record</button>
+                    <p class="status" id="audio-status">Ready to record</p>
+                </div>
+            </div>
+
+            <!-- Analyze Button -->
+            <div class="analyze-section">
+                <button id="analyze-btn" class="btn btn-analyze" disabled>
+                    Analyze Wellness Score
+                </button>
+                <p class="instruction">Capture both photo and audio to analyze</p>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="results-section" style="display: none;">
+                <h2>📊 Analysis Results</h2>
+                
+                <div class="wellness-score">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="90" class="score-bg"></circle>
+                            <circle cx="100" cy="100" r="90" class="score-fill" id="score-circle"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <span class="score-value" id="wellness-score">--</span>
+                            <span class="score-label">Wellness</span>
+                        </div>
+                    </div>
+                    <p class="interpretation" id="interpretation">--</p>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <h3>Face Analysis</h3>
+                        <div class="metric">
+                            <span class="metric-label">Stress Level:</span>
+                            <span class="metric-value" id="face-stress">--%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Confidence:</span>
+                            <span class="metric-value" id="face-confidence">--%</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <h3>Voice Analysis</h3>
+                        <div class="metric">
+                            <span class="metric-label">Stress Level:</span>
+                            <span class="metric-value" id="voice-stress">--%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Confidence:</span>
+                            <span class="metric-value" id="voice-confidence">--%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="timestamp" id="timestamp">--</p>
+                
+                <button id="new-analysis-btn" class="btn btn-secondary">New Analysis</button>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your wellness...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>🔒 Privacy-safe: No images or audio stored, only numerical results</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
